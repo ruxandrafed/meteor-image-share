@@ -2,9 +2,22 @@ Images = new Mongo.Collection("images");
 
 if (Meteor.isClient) {
 
+  Session.set("imageLimit", 8);
+
+  // infinite scrolling
+  var lastScrollTop = 0;
   $(window).scroll(function(event) {
-    console.log(new Date());
-  })
+    // test if we are near the bottom of the window
+    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+      // where are we in the page
+      var scrollTop = $(this).scrollTop();
+      // test if we are scrolling down
+      if (scrollTop > lastScrollTop) {
+        Session.set("imageLimit", Session.get("imageLimit") + 4);
+      }
+      lastScrollTop = scrollTop;
+    }
+  });
 
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_EMAIL"
@@ -16,7 +29,7 @@ if (Meteor.isClient) {
       if (Session.get("userFilter")) {
         return Images.find({createdBy: Session.get("userFilter")}, {sort: {createdOn: -1, rating:-1}});
       } else {
-        return Images.find({}, {sort: {createdOn: -1, rating:-1}});
+        return Images.find({}, {sort: {createdOn: -1, rating:-1}, limit: Session.get("imageLimit")});
       }
     },
     filtering_images: function() {
