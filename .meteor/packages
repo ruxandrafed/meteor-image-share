@@ -22,3 +22,4 @@ twbs:bootstrap
 barbatus:stars-rating
 accounts-ui
 accounts-password
+iron:router

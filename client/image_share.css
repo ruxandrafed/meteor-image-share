@@ -8,6 +8,10 @@
   max-height: 300px;
 }
 
+.single-img {
+  max-width: 100%;
+}
+
 #login-buttons {
   float: right;
   padding: 20px 0;
