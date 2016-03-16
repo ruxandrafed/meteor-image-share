@@ -114,7 +114,7 @@ Template.images.events({
   },
   'click .js-rate-image': function (event) {
     var rating = $(event.currentTarget).data("userrating");
-    var image_id = this.data-id;
+    var image_id = this['data-id'];
     Images.update({_id: image_id}, {$set: {rating: rating}});
   },
   'click .js-show-image-form': function (event) {
