@@ -103,9 +103,9 @@ Template.welcome.helpers({ username: function () {
 // events
 
 Template.images.events({
-  'click .js-image': function (event) {
-    $(event.target).css('width', '100px');
-  },
+  // 'click .js-image': function (event) {
+  //   $(event.target).css('width', '100px');
+  // },
   'click .js-del-image': function (event) {
     var image_id = this._id;
     $("#"+image_id).hide('slow', function () {
@@ -114,7 +114,7 @@ Template.images.events({
   },
   'click .js-rate-image': function (event) {
     var rating = $(event.currentTarget).data("userrating");
-    var image_id = this.id;
+    var image_id = this.data-id;
     Images.update({_id: image_id}, {$set: {rating: rating}});
   },
   'click .js-show-image-form': function (event) {

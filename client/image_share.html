@@ -79,13 +79,10 @@
           <a href="/image/{{_id}}"><img class="js-image thumbnail-img" src="{{img_src}}" alt="{{img_alt}}" /></a>
 
           <div class="caption">
-            <h3>Rating: {{rating}}</h3>
+            <h5>Rating: {{rating}}</h5>
+            <p>{{> starsRating mutable=true class="js-rate-image" data-id=_id size=30 rating=rating}}</p>
             <p>Author: <a href="#" class="js-set-image-filter">{{getUser createdBy}}</a></p>
             <p>{{img_alt}}</p>
-
-            <p>
-              {{> starsRating mutable=true class="js-rate-image" id=_id}}
-            </p>
 
             <button class="js-del-image btn btn-warning">delete</button>
           </div>
