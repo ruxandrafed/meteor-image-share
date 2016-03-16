@@ -17,6 +17,9 @@ Router.route('/images', function () {
   this.render('images', {
     to: 'main'
   });
+  this.render('image_add_form', {
+    to: 'modal'
+  });
 });
 
 Router.route('image/:_id', function () {
@@ -88,7 +91,7 @@ Template.images.helpers({
   }
 });
 
-Template.body.helpers({ username: function () {
+Template.welcome.helpers({ username: function () {
   if (Meteor.user()) {
     let username = Meteor.user().username;
     return username;

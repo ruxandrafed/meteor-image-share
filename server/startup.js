@@ -10,6 +10,6 @@ Meteor.startup(function(){
     }// end of for insert images
     // count the images!
   }// end of if have no images
-  // console.log("startup.js says: "+Images.find().count());
+  console.log("startup.js says: "+Images.find().count());
 });
 
